@@ -1,3 +1,5 @@
+//run this file using command in terminal nodemon app.js - it's will be waiting for changes before restart
+
 console.log('Starting app.js');
 
 const fs    = require('fs');
