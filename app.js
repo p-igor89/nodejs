@@ -7,11 +7,11 @@ const notes = require('./notes');
 const argv = yargs.argv;
 
 let command = process.argv[2];
-console.log('Command ', command);
+//console.log('Command ', command);
 
 //node app.js add --title="Hello again" - create good object with excellent parser for Yargs like :
 // Yards { _: [ 'add' ], title: 'Hello again', '$0': 'app.js' }
-console.log('Yargs', argv);
+//console.log('Yargs', argv);
 
 if(command === 'add'){
     var note = notes.addNote(argv.title, argv.body);
@@ -22,10 +22,11 @@ if(command === 'add'){
     } else {
         //if get the same title before
         console.log("Note title taken");
-
     }
 }else if(command === 'list'){
-    notes.getAll();
+    var allNotes = notes.getAll();
+    console.log(`Printing ${allNotes.length} note(s).`);
+    allNotes.forEach((note) => notes.logNote(note));
 }else if(command ==='read'){
     var note = notes.getNote(argv.title);
     if(note){
